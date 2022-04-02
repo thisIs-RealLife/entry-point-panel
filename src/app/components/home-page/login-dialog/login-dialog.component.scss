@@ -1,0 +1,19 @@
+.btn {
+  border: 3px solid silver;
+  border-radius: 25px;
+  font-size: calc(0.8vh + 0.45vw);
+  line-height: 13px;
+  font-weight: 600;
+  width: 21vh;
+  height: 5vh;
+  text-align: center;
+  vertical-align: center;
+  padding-top: 1.4vh;
+  margin-left: 5%;
+  margin-top: 10%;
+}
+
+::ng-deep mat-dialog-container {
+  background-image: url('loginBG.svg') !important;
+  background-repeat: no-repeat;
+}

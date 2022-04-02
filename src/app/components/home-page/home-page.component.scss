@@ -1,0 +1,53 @@
+.yourlang {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1vw;
+  line-height: 22px;
+
+
+  color: #1C1C1C;
+}
+
+.btn {
+  background: #FFAE4E;
+  border-radius: 23.3945px;
+  font-size: calc(0.8vh + 0.45vw);
+  line-height: 13px;
+  font-weight: 600;
+  width: 21vh;
+  height: 3.5vh;
+  text-align: center;
+  vertical-align: center;
+  padding-top: 1vh;
+}
+
+.abs {
+
+}
+
+.abs-i {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  height: 10vw;
+  max-width: 657px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 29px;
+  color: #1C1C1C;
+}
+
+.abs-t {
+  position: absolute;
+  top: 50%;
+  left: 49%;
+  height: 10vw;
+  max-width: 40vw;
+  font-style: normal;
+  font-weight: lighter;
+  font-size: 1.3vw;
+  line-height: 1.5vw;
+  letter-spacing: 2px;
+  color: #1C1C1C;
+}

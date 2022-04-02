@@ -1,0 +1,26 @@
+<div class="container-fluid" >
+  <div class="row" style="height: 15vh">
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <form class="example-form" [formGroup]="fg">
+        <mat-form-field class="example-full-width">
+          <mat-label>User login/Email</mat-label>
+          <span matPrefix></span>
+          <input type="text" matInput formControlName="username">
+          <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+        <mat-form-field >
+          <mat-label>Password</mat-label>
+          <span matPrefix> </span>
+          <input type="password" matInput formControlName="password">
+          <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+
+        <div class="btn" (click)="logIn()">
+          LOG IN NOW >
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

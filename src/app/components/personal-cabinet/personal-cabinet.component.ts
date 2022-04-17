@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {environment} from "../../../environments/environment";
+import {PersonalCabinetService} from "../../service/personal-cabinet.service";
 
 @Component({
   selector: 'app-personal-cabinet',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonalCabinetComponent implements OnInit {
 
-  constructor() { }
+  private url = environment.url + '/cabinet';
+
+  constructor(
+              private cabinetService: PersonalCabinetService) { }
 
   ngOnInit(): void {
+    this.cabinetService.getPerson().subscribe(response => {
+      console.log(response?.data);
+    })
   }
+
 
 }

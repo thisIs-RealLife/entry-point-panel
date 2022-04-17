@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {SecurityService} from "../../../service/security.service";
 import {Router} from "@angular/router";
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-login-dialog',
@@ -13,7 +14,8 @@ export class LoginDialogComponent implements OnInit {
   fg: FormGroup;
 
   constructor(private security: SecurityService,
-              private router: Router) {
+              private router: Router,
+              private dialog: MatDialogRef<LoginDialogComponent>) {
   }
 
   ngOnInit(): void {
@@ -25,8 +27,9 @@ export class LoginDialogComponent implements OnInit {
 
   logIn() {
     this.security.login(this.fg.getRawValue()).subscribe(response => {
-      if (response){
-
+      if (response.httpStatus === "OK"){
+        this.dialog.close();
+        this.router.navigate(['lk']);
       }
     })
   }

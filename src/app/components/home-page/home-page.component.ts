@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {LoginDialogComponent} from "./login-dialog/login-dialog.component";
-import {RegisterComponent} from "./register/register.component";
+import {RegisterComponent} from "./register-dialog/register.component";
 
 @Component({
   selector: 'app-home-page',

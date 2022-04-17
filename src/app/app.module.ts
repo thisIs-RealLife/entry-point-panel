@@ -8,16 +8,22 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule, Routes} from '@angular/router';
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
-import { LoginDialogComponent } from './components/home-page/login-dialog/login-dialog.component';
+import {LoginDialogComponent} from './components/home-page/login-dialog/login-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import {HttpClientModule} from "@angular/common/http";
-import { RegisterComponent } from './components/home-page/register/register.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {RegisterComponent} from './components/home-page/register-dialog/register.component';
+import {PersonalCabinetComponent} from "./components/personal-cabinet/personal-cabinet.component";
+import {AuthInterceptor} from "./interceptors/auth.interceptor";
+import {ErrorInterceptor} from "./interceptors/error.interceptor";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomePageComponent },
+  {path: '', component: HomePageComponent},
+  {path: 'lk', component: PersonalCabinetComponent}
 ]
 
 
@@ -27,6 +33,7 @@ const routes: Routes = [
     HomePageComponent,
     LoginDialogComponent,
     RegisterComponent,
+    SpinnerComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -42,9 +49,22 @@ const routes: Routes = [
     MatInputModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
 
   ],
-  providers: [],
+  providers: [
+
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

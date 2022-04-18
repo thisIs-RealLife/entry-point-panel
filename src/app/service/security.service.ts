@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import {Observable, of, Subject, tap} from "rxjs";
+import {Observable, tap} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,9 @@ export class SecurityService {
   login(data: any): Observable<any> {
     return this.http.post<string>(this.baseUrl + '/login', data).pipe(
       tap(res => {
-        localStorage.setItem("token", res);
+        // @ts-ignore
+        var token: string = 'Auth' + res?.data;
+        localStorage.setItem("token", token);
       })
     );
   }

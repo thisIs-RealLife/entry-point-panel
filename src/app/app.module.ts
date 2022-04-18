@@ -19,6 +19,9 @@ import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import {ErrorInterceptor} from "./interceptors/error.interceptor";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/material/snack-bar";
+import {SpinnerInterceptor} from "./interceptors/spinner.interceptor";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 
 const routes: Routes = [
@@ -50,10 +53,17 @@ const routes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule,
+    MatProgressBarModule,
+
 
   ],
   providers: [
-
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SpinnerInterceptor,
+      multi: true,
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
@@ -64,6 +74,10 @@ const routes: Routes = [
       useClass: ErrorInterceptor,
       multi: true,
     },
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: {duration: 2500}
+    }
   ],
   bootstrap: [AppComponent]
 })
